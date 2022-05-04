@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_04_103517) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_04_104108) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,25 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_04_103517) do
     t.datetime "updated_at", null: false
     t.index ["name", "user_id"], name: "index_categories_on_name_and_user_id", unique: true
     t.index ["user_id"], name: "index_categories_on_user_id"
+  end
+
+  create_table "cost_comments", force: :cascade do |t|
+    t.bigint "cost_id"
+    t.string "cost_description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cost_id"], name: "index_cost_comments_on_cost_id"
+  end
+
+  create_table "costs", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "category_id"
+    t.float "amount"
+    t.string "currency"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_costs_on_category_id"
+    t.index ["user_id"], name: "index_costs_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

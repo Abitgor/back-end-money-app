@@ -1,2 +1,4 @@
-class API::V1::CategoriesController < API::V1::BaseController
+# frozen_string_literal: true
+
+class Api::V1::CategoriesController < Api::V1::BaseController
 end
