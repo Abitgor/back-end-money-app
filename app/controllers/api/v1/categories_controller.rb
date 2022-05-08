@@ -6,9 +6,9 @@ class Api::V1::CategoriesController < Api::V1::BaseController
     @category = current_user.categories.create!(categories_params)
   end
 
-  def delete
+  def destroy
     @category = Category.find(params[:id])
-    @category.destroy
+    @category.destroy!
     render :json => {status: 200,message: "Successful delete!" }
   end
 
