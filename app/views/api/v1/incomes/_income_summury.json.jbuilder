@@ -1,0 +1,1 @@
+json.extract! income, :crated_at, :updated_at, :amount, :source

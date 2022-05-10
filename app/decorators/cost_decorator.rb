@@ -16,4 +16,8 @@ class CostDecorator
   def category_name
     category.name.downcase.capitalize
   end
+
+  def cost_description
+    cost.cost_comment.cost_description
+  end
 end

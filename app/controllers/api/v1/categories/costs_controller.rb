@@ -4,6 +4,7 @@ class Api::V1::Categories::CostsController < Api::V1::BaseController
   before_action :set_category
   def create
     @cost = @category.costs.create!(cost_params.merge({user_id: current_user.id}))
+    @cost.cost_comment.create!(params[:cost_description]) if params[:cost_description].present?
   end
 
   def destroy
