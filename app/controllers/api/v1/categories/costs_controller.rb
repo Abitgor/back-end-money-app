@@ -2,13 +2,17 @@
 
 class Api::V1::Categories::CostsController < Api::V1::BaseController
   before_action :set_category
+  before_action :set_cost, only: %i[destroy update]
   def create
     @cost = @category.costs.create!(cost_params.merge({user_id: current_user.id}))
     @cost.cost_comment.create!(params[:cost_description]) if params[:cost_description].present?
   end
 
+  def update
+    @cost.update!(cost_params)
+  end
+
   def destroy
-    @cost = Cost.find(params[:id])
     @cost.destroy!
     render :json => {status: 200,message: "Successful delete!" }
   end
@@ -18,6 +22,9 @@ class Api::V1::Categories::CostsController < Api::V1::BaseController
   end
 
   private
+  def set_cost
+    @cost = @category.costs.find(params[:id])
+  end
 
   def cost_params
     params.permit(:amount, :currency)

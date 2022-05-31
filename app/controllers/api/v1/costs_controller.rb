@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class Api::V1::CostsController < Api::V1::BaseController
-  before_action :set_cost
+  before_action :set_cost,only: %i[show]
 
   def show
   end
 
   def index
-    @costs = Cost.joins(category: {user_id: current_user.id})
+    @costs = Cost.joins(:category).where(Category.arel_table[:user_id].eq(current_user.id))
   end
 
   private

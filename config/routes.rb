@@ -8,4 +8,15 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                registrations: 'users/registrations'
              }
+
+  namespace :api do
+    namespace :v1 do
+      resources :categories do
+        resources :costs, controller: "categories/costs"
+      end
+
+      resources :costs
+      resources :incomes
+    end
+  end
 end

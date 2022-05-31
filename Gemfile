@@ -16,14 +16,7 @@ gem "puma", "~> 5.0"
 gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 gem "bootsnap", require: false
-gem 'sidekiq' # Simple, efficient background processing for Ruby
-gem 'sidekiq_alive'
-gem 'sidekiq-failures' # Sidekiq failure tracking
-gem 'sidekiq-pro' # Sidekiq Pro
-gem 'sidekiq-unique-jobs'
 gem 'secure_headers'
-gem 'redis'
-gem 'redis-rails'
 gem 'pundit'
 gem 'pagy'
 gem 'money-rails'
@@ -31,17 +24,7 @@ gem 'devise'
 gem 'devise-jwt'
 gem 'jwt'
 gem 'jbuilder'
-gem 'discard'
-gem 'clockwork'
-gem 'chronic'
-gem 'aws-sdk-s3', require: false # AWS Ruby gem for Amazon S3
-gem 'aws-sdk-sqs'
-gem 'audited'
-gem 'active_storage_validations'
-gem 'mini_magick'
 gem "image_processing"
-gem 'timezone'
-
 
 group :development, :test do
   gem "rspec-rails"
@@ -50,6 +33,7 @@ group :development, :test do
   gem 'rubocop-rails', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-flexport', require: false
+  gem 'rubocop-rspec'
   gem "annotate"
   gem 'active_record_query_trace' # Displays a backtrace for each query in Rails' development console and log
   gem 'brakeman', require: false
@@ -66,6 +50,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails' # Pry on rails console
   gem 'rb-readline'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -96,5 +81,6 @@ group :test do
   gem 'vcr'
   gem 'webdrivers'
   gem 'webmock'
+  gem 'simplecov'
 end
 

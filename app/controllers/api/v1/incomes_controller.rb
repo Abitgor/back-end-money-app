@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 class Api::V1::IncomesController < Api::V1::BaseController
-  before_action :set_income, only: %i[show destroy]
+  before_action :set_income, only: %i[show destroy update]
   def create
-    @income = current_user.create!(income_params)
+    @income = current_user.incomes.create!(income_params)
   end
 
   def destroy
@@ -12,6 +12,10 @@ class Api::V1::IncomesController < Api::V1::BaseController
   end
 
   def show
+  end
+
+  def update
+    @income.update!(income_params)
   end
 
   def index
