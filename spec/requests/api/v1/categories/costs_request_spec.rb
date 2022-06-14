@@ -5,7 +5,8 @@ RSpec.describe 'Category costs requests', type: :request do
   let!(:auth_header) { get_headers(current_user.email, "12345679") }
   let(:valid_params) {{
     amount: 111.111,
-    currency: "USD"
+    currency: "USD",
+    cost_description: "asdasdasdasd"
   }}
   let!(:category) { create(:category, user: current_user, name: "Money") }
 
