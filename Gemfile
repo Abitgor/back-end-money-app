@@ -25,6 +25,7 @@ gem 'devise-jwt'
 gem 'jwt'
 gem 'jbuilder'
 gem "image_processing"
+gem 'rack-cors'
 
 group :development, :test do
   gem "rspec-rails"

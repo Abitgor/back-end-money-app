@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       resources :categories do
         resources :costs, controller: "categories/costs"
       end
-
+      resources :users, only: %i[update]
       resources :costs
       resources :incomes
     end

@@ -7,7 +7,7 @@ class Api::V1::Categories::CostsController < Api::V1::BaseController
 
   def create
     @cost = @category.costs.create!(cost_params.merge({user_id: current_user.id}))
-    @cost.cost_comment.create!(cost_description: params[:cost_description]) if params[:cost_description].present?
+    CostComment.create!(cost_description: params[:cost_description],cost: @cost) if params[:cost_description].present?
   end
 
   def update
@@ -31,7 +31,7 @@ class Api::V1::Categories::CostsController < Api::V1::BaseController
   end
 
   def cost_params
-    params.permit(:amount, :currency)
+    params.permit(:amount)
   end
 
   def set_category

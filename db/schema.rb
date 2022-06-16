@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_08_113403) do
+ActiveRecord::Schema[7.0].define(version: 2022_06_14_133321) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -35,7 +35,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_113403) do
     t.bigint "user_id"
     t.bigint "category_id"
     t.float "amount"
-    t.string "currency"
+    t.string "currency", default: "USD"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_costs_on_category_id"
@@ -48,6 +48,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_113403) do
     t.string "source"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "currency", default: "USD"
     t.index ["user_id"], name: "index_incomes_on_user_id"
   end
 
@@ -60,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_08_113403) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "jti", null: false
+    t.string "currency", default: "USD"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["jti"], name: "index_users_on_jti", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
