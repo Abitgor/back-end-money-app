@@ -17,21 +17,24 @@ require "action_cable/engine"
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
 module Lifemanager
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.session_store :cookie_store, key: '_interslice_session'
     config.middleware.use ActionDispatch::Cookies
+    config.middleware.delete ActionDispatch::Session::CookieStore
     config.middleware.use config.session_store, config.session_options
     config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins 'http://localhost:4000'
         resource '*',
                  headers: :any,
-                 methods: :any
+                 methods: :any,
+                 expose: %w(Authorization),
+                 max_age: 666
       end
     end
   end
 end
+Rails.application.config.session_store :disabled
