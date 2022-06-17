@@ -29,6 +29,6 @@ class Api::V1::IncomesController < Api::V1::BaseController
   end
 
   def income_params
-    params.permit(:amount, :source)
+    params.permit(:amount, :source, :comment)
   end
 end

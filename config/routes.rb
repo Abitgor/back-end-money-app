@@ -14,7 +14,13 @@ Rails.application.routes.draw do
       resources :categories do
         resources :costs, controller: "categories/costs"
       end
-      resources :users, only: %i[update]
+      resources :users, only: %i[] do
+        collection do
+          get :user_details
+          patch :update_profile
+          put :update_profile
+        end
+      end
       resources :costs
       resources :incomes
     end

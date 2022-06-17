@@ -1,7 +1,8 @@
 class CostDecorator
   attr_reader :cost
 
-  delegate :created_at,
+  delegate :id,
+            :created_at,
            :updated_at,
            :user,
            :category,

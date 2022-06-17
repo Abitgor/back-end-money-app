@@ -1,15 +1,16 @@
 class Api::V1::UsersController < Api::V1::BaseController
   before_action :set_user
-  def show
+  def user_details
   end
 
-  def update
+  def update_profile
     @user.update!(user_params)
   end
+
   private
 
   def user_params
-    params.permit(:currency)
+    params.permit(:currency, :password)
   end
 
   def set_user

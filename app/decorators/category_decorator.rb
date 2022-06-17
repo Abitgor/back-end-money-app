@@ -1,7 +1,8 @@
 class CategoryDecorator
   attr_reader :category
 
-  delegate :created_at,
+  delegate             :id,
+                      :created_at,
                       :updated_at,
                       :user,
            to: :category
