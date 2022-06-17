@@ -30,7 +30,7 @@ class CalculateDataAnalyticsService
       total += statistic.total_amount
       income_line << {
         total: total,
-        date: statistic.created_date.to_s
+        date: statistic.created_date.strftime("%d/%m")
       }
     end
     make_fool_statistic(income_line)
@@ -43,7 +43,7 @@ class CalculateDataAnalyticsService
       total += statistic.total_amount
       cost_line << {
         total: total,
-        date: statistic.created_date.to_s
+        date: statistic.created_date.strftime("%d/%m")
       }
     end
     make_fool_statistic(cost_line)
@@ -67,6 +67,6 @@ class CalculateDataAnalyticsService
   end
 
   def date_range
-    ((Date.today-6.days)..Date.today).map(&:to_s)
-  end
+    ((Date.today-6.days)..Date.today).map {|d| d.strftime("%d/%m")}
+    end
 end
