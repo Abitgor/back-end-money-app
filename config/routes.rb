@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       resources :statistic, only: [] do
         collection do
           get :recent_transactions
+          get :data_analytics
         end
       end
       resources :costs

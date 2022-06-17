@@ -8,6 +8,7 @@ class CalculateRecentTransactionService
     (incomes+costs).sort_by { |hsh| hsh[:date] }.first(100)
   end
 
+  private
 
   def incomes
     user_incomes = []

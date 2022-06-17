@@ -9,6 +9,7 @@ class Api::V1::StatisticController < Api::V1::BaseController
   end
 
   def data_analytics
-
+    data =  CalculateDataAnalyticsService.new(current_user).calculate!
+    render json: data
   end
 end
