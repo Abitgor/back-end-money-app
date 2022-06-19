@@ -52,12 +52,15 @@ class CalculateDataAnalyticsService
   def make_fool_statistic(statistic)
     if statistic.size > 0
       7.times do |i|
-          unless statistic[i][:date] == date_range[i]
+          unless statistic[i].present? && statistic[i][:date] == date_range[i]
             if i == 0
               statistic.insert(i,{date: date_range[i], total: 0})
             else
               statistic.insert(i,{date: date_range[i], total: statistic[i-1][:total]})
             end
+          end
+          unless statistic[i].present?
+            statistic.insert(i, { date: date_range[i], total: statistic[i - 1][:total] })
           end
       end
     else
