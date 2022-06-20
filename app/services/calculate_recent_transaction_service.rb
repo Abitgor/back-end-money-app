@@ -5,7 +5,7 @@ class CalculateRecentTransactionService
   end
 
   def calculate!
-    (incomes+costs).sort_by { |hsh| hsh[:date] }.first(100)
+    (incomes+costs).sort_by { |hsh| hsh[:date] }.reverse.first(100)
   end
 
   private

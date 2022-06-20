@@ -19,7 +19,7 @@ class Api::V1::IncomesController < Api::V1::BaseController
   end
 
   def index
-    @incomes = current_user.incomes
+    @incomes = current_user.incomes&.order(created_at: :desc)
   end
 
   private

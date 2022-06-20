@@ -13,7 +13,12 @@ class Api::V1::CategoriesController < Api::V1::BaseController
   end
 
   def index
-    @categories = current_user.categories
+    @categories = current_user.categories&.order(created_at: :desc)
+  end
+
+  def search
+    @categories = current_user.categories.where(Category.arel_table[:name].matches("%#{params[:name_like]}%"))
+    @categories = nil unless params[:name_like].present?
   end
 
   def update

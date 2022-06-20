@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :categories do
-        resources :costs, controller: "categories/costs"
+        collection do
+          get :search
+        end
       end
       resources :users, only: [] do
         collection do

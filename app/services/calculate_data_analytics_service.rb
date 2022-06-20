@@ -71,5 +71,5 @@ class CalculateDataAnalyticsService
 
   def date_range
     ((Date.today-6.days)..Date.today).map {|d| d.strftime("%d/%m")}
-    end
+  end
 end
